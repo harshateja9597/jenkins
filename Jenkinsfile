@@ -8,7 +8,7 @@ pipeline {
         GREETINGS = 'hello jenkins'
     }
     options{
-        timeout(time: 1, unit: 'SECONDS')
+        timeout(time: 1, unit: 'HOURS')
     }
 
     stages {
@@ -27,8 +27,8 @@ pipeline {
                 echo 'Deploying....'
                 sh """
                 $GREETINGS
-                
                 """
+                disableConcurrentBuilds()    
             }
         }
     }
