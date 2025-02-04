@@ -1,10 +1,15 @@
 pipeline {
     agent {
-    node {
-        label 'linux'
-        
+        node {
+           label 'linux' 
+        }
     }
-}
+    environment{
+        GREETINGS = 'hello jenkins'
+    }
+    options{
+        timeout(time: 1, unit: 'seconds')
+    }
 
     stages {
         stage('Build') {
@@ -20,6 +25,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh """
+                $GREETINGS
+                """
             }
         }
     }
