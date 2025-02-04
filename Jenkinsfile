@@ -25,9 +25,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh """
-                $GREETINGS
-                """
+               
                 disableConcurrentBuilds()    
             }
         }
